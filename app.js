@@ -4,21 +4,18 @@ const app = express();
 require('dotenv/config');
 const api = process.env.API_URL;
 
-app.get(`${api}/products`, (req, res) => {
+app.use(express.json())
+
+app.get('/', (req, res) => {
    const products = {
-      id: 1,
-      name: 'Ernest',
-      age: 12,
+      slackUsername: 'Ernesto',
+      backend: true,
+      age: 21,
+      bio: 'We worship angular'
    }
    res.send(products)
 })
-app.post(`${api}/products`, (req, res) => {
-   const newProd = req.body;
-   console.log(newProd);
-   res.send(newProd)
-})
 
 app.listen(3000, () => {
-   console.log(api)
-   console.log('Server is running')
+   console.log('Server is running');
 })
