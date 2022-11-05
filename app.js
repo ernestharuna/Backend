@@ -12,6 +12,9 @@ app.use(morgan('tiny'));
 
 const details = {
    slackUsername: user,
+   backend: true,
+   age: 21,
+   about: "JavaScript rules the world"
 }
 
 app.get('/', (req, res) => {
@@ -19,24 +22,24 @@ app.get('/', (req, res) => {
 })
 
 app.post('/', (req, res) => {
-   const newProd = req.body;
+   const obj = req.body;
 
-   var oprt = newProd.operation_type;
-   var int1 = newProd.x;
-   var int2 = newProd.y;
-   newProd.result;
+   var oprt = obj.operation_type;
+   var int1 = obj.x;
+   var int2 = obj.y;
+   obj.result;
 
    if (oprt == "addition") {
-      newProd.result = int1 + int2;
+      obj.result = int1 + int2;
    } else if (oprt == "subtraction") {
-      newProd.result = int1 - int2;
+      obj.result = int1 - int2;
    } else if (oprt == "multiplication") {
-      newProd.result = int1 * int2;
+      obj.result = int1 * int2;
    }
 
    const xyz = {
       slackUsername: user,
-      result: newProd.result,
+      result: obj.result,
       operation_type: oprt,
    }
 
